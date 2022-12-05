@@ -1,0 +1,108 @@
+@media (max-width: 480px) {
+    html #search{
+        display: none;
+    }
+    html #searchMenu{
+        display: flex;
+    }
+}
+
+@media (max-width: 420px) {
+    html #searchMenu{
+        width: 40%;
+    }
+}
+
+@media (max-width: 390px) {
+    html #searchMenu{
+        width: 35%;
+    }
+}
+
+@media (max-width: 700px) {
+    html #search input{
+        width: 90%;
+    }
+    html #search div{
+        width: 10%;
+    }
+}
+
+#header{
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(190, 190, 190);
+}
+
+#container{
+    width: 93%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo{
+    width: 100px;
+    height: 40px;
+    background-color: rgb(148, 148, 148);
+    padding: 3px;
+}
+
+#logo:hover{
+    cursor: pointer
+}
+
+#search{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#search input{
+    width: 95%;
+    height: 25px;
+}
+
+#search div{
+    width: 5%;
+    height: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgb(133, 133, 133);
+    border-left: 0px;
+}
+
+#search div:hover{
+    cursor: pointer
+}
+
+#profile{
+    width: 55px;
+    height: 55px;
+    border-radius: 100%;
+    background-color: rgb(148, 148, 148);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#profile img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+#profile:hover{
+    cursor: pointer
+}
+
+#searchMenu{
+    display: none;
+    width: 50%;
+    justify-content: flex-end;
+}

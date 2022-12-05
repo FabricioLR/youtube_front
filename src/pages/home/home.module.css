@@ -1,0 +1,30 @@
+@media (max-width: 1150px) {
+    html #localVideos{
+        grid-template-columns: repeat(3, 300px);
+    }
+}
+@media (max-width: 1017px) {
+    html #localVideos{
+        grid-template-columns: repeat(2, 350px);
+    }
+}
+
+@media (max-width: 805px) {
+    html #localVideos{
+        grid-template-columns: repeat(1, 100%);
+    }
+}
+
+#main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#localVideos{
+    width: 95%;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    justify-content: space-between;
+    grid-gap: 25px;
+}

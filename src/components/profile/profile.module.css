@@ -1,0 +1,35 @@
+#profile{
+    width: 170px;
+    height: 250px;
+    background-color: rgb(190, 190, 190);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 100%;
+    transition: 1s;
+}
+
+#profile a{
+    text-decoration: none;
+    width: 130px;
+    padding: 5px;
+    border-radius: 3px;
+    background-color: rgb(148, 148, 148);
+    text-align: center;
+    color: white;
+}
+
+#profile a:first-child{
+    margin-top: 20px;
+}
+#profile a:nth-child(2){
+    margin-top: 10px;
+}
+#profile a:last-child{
+    margin-top: 10px;
+}
+
+#profile.activeProfile{
+    left: calc(100% - 170px);
+}
