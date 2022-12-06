@@ -1,7 +1,10 @@
 import axios from "axios"
 
+//https://apiparateste.pagekite.me/
+//"http://localhost:3300/"
+
 const api = axios.create({
-    baseURL: "http://localhost:3300/"
+    baseURL: "https://apiparateste.pagekite.me/"
 })
 
 export default api

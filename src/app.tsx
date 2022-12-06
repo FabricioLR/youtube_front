@@ -6,6 +6,7 @@ import SignUp from "./pages/auth/signup/Signup"
 import Upload from "./pages/upload/Upload"
 import SignOut from "./pages/auth/signout/SignOut"
 import Profile from "./pages/profile/Profile"
+import Watch from "./pages/watch/Watch"
 
 function App(){
     return(
@@ -17,6 +18,7 @@ function App(){
                 <Route path="/upload" element={<Upload/>}/>
                 <Route path="/signout" element={<SignOut/>}/>
                 <Route path="/profile" element={<Profile/>}/>
+                <Route path="/watch" element={<Watch/>}/>
             </Routes>
         </BrowserRouter>
     )

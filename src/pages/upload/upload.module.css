@@ -1,3 +1,33 @@
+@media (max-width: 680px) {
+    html #form{
+        width: 400px;
+    }
+    html #title{
+        width: 240px;
+    }
+    html #file{
+        width: 240px;
+    }
+    html #submit{
+        width: 180px;
+    }
+}
+
+@media (max-width: 430px) {
+    html #form{
+        width: 330px;
+    }
+    html #title{
+        width: 240px;
+    }
+    html #file{
+        width: 240px;
+    }
+    html #submit{
+        width: 110px;
+    }
+}
+
 #upload{
     width: 100%;
     height: 100vh;

@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { call, put } from "redux-saga/effects"
 import api from "../../../context/api"
-import { loadSuccess, loadFailure, uploadRequest, uploadFailure, uploadSuccess } from "./actions"
+import { loadSuccess, loadFailure, uploadRequest, uploadFailure, uploadSuccess, updateSuccess, updateFailure, updateRequest } from "./actions"
 import { UploadVideo, Video } from "./types"
 
 type ResponseData = {
@@ -11,6 +11,12 @@ type ResponseData = {
 }
 
 type ResponseDataUV = {
+    data: {
+        video: Video
+    }
+}
+
+type ResponseDataUVS = {
     data: {
         video: Video
     }
@@ -51,5 +57,17 @@ export function* UploadVideo({ payload }: ReturnType<typeof uploadRequest>){
     } catch (error) {
         alert("Try again")
         yield put(uploadFailure())
+    } 
+}
+
+export function* UpdateVisualizations({ payload }: ReturnType<typeof updateRequest>){
+    const videoId = payload
+    
+    try {
+        const response: ResponseDataUVS = yield call(api.put, "UpdateVisualizations", { videoId })
+        yield put(updateSuccess(response.data.video.id))
+    } catch (error) {
+        console.log(error)
+        yield put(updateFailure())
     } 
 }

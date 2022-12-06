@@ -67,6 +67,10 @@
     height: 25px;
 }
 
+#search input:focus{
+    outline: none;
+}
+
 #search div{
     width: 5%;
     height: 27px;

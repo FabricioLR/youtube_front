@@ -1,0 +1,85 @@
+@media (max-width: 850px) {
+    html #profile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    html #profileInfo{
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    html #edit{
+        margin-right: 0px;
+        width: 80%;
+    }
+}   
+@media (max-width: 460px) {
+    html #image{
+        width: 300px;
+        height: 300px;
+    }
+}   
+
+#profile{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+}
+
+#profileInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+#image{
+    width: 400px;
+    height: 400px;
+    border-radius: 100%;
+    background-color: rgb(211, 211, 211);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#image img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+#name{
+    margin-top: 20px;
+    font-size: 25px;
+}
+#name:hover{
+    cursor: default;
+}
+
+#edit{
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
+#changeImage{
+    display: flex;
+    flex-direction: column;
+    font-size: 19px;
+}
+
+#changeImage > label{
+    margin-bottom: 5px;
+}
+
+#submit{
+    width: 100%;
+    height: 30px;
+    font-size: 15px;
+    margin-top: 30px;
+}
+#submit:hover{
+    cursor: pointer;
+}
