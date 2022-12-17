@@ -1,0 +1,31 @@
+#div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#videos{
+    width: 95%;
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(4, 250px);
+    justify-content: space-between;
+    grid-gap: 10px;
+}
+
+#clearHistoric{
+    align-items: flex-start;
+    display: flex;
+    width: 95%;
+    margin-top: 20px;
+}
+#clearHistoric button{
+    padding: 6px;
+}
+#clearHistoric button:hover{
+    cursor: pointer;
+}
+
+#clearHistoric button:active{
+    transform: translateY(1px);
+}

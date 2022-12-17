@@ -1,9 +1,12 @@
 import { createContext, ReactNode, useState, useEffect } from "react"
+import { Video } from "../storage/ducks/videos/types"
 import api from "./api"
 
 type User = {
     name: string
     foto_url: string
+    id: string
+    userVideos: Omit<Video, "user">[] | []
 }
 
 type AuthContextData = {
@@ -37,6 +40,8 @@ type AuthResponseData = {
     user: {
         name: string
         foto_url: string
+        id: string
+        userVideos: Omit<Video, "user">[] | []
     }
 }
 
@@ -56,7 +61,9 @@ function AuthProvider(props: AuthProviderProps){
             if (response.status == 200){
                 setUser({
                     name: response.data.user.name,
-                    foto_url: response.data.user.foto_url
+                    foto_url: response.data.user.foto_url,
+                    id: response.data.user.id,
+                    userVideos: []
                 })
                 sessionStorage.setItem("token", response.data.token)
                 data.navigate("/")
@@ -73,7 +80,9 @@ function AuthProvider(props: AuthProviderProps){
             if (response.status == 200){
                 setUser({
                     name: response.data.user.name,
-                    foto_url: response.data.user.foto_url
+                    foto_url: response.data.user.foto_url,
+                    id: response.data.user.id,
+                    userVideos: response.data.user.userVideos
                 })
                 sessionStorage.setItem("token", response.data.token)
                 data.navigate("/")
@@ -102,10 +111,14 @@ function AuthProvider(props: AuthProviderProps){
                 }
             })
 
+            console.log(response.data)
+
             if(response.status == 200){
                 setUser({
                     name: response.data.user.name,
-                    foto_url: response.data.user.foto_url
+                    foto_url: response.data.user.foto_url,
+                    id: response.data.user.id,
+                    userVideos: response.data.user.userVideos
                 })
             }
         } catch(error) {
@@ -116,6 +129,7 @@ function AuthProvider(props: AuthProviderProps){
     async function ChangeProfileImage(data: ChangeProfileImageData){
         const formData = new FormData()
         formData.append("file", data.file)
+        
         try {
             const response = await api.post("ChangeUserImage", formData, {
                 headers: {
@@ -123,7 +137,10 @@ function AuthProvider(props: AuthProviderProps){
                 }
             })
 
-            console.log(response)
+            if (response.status == 200){
+                alert("success")
+                window.location.reload()
+            }
         } catch (error) {
             console.log(error)
         }

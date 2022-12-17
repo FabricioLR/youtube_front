@@ -1,0 +1,82 @@
+@media (max-width: 560px) {
+    html .localVideo{
+        flex-direction: column;
+        height: 325px;
+        align-items: start;
+        margin: 10px 10px 0px 10px;
+        width: calc(100% - 20px);
+    }
+    html .video{
+        width: 100%;
+        height: 200px;
+    }
+    html .info{
+        margin-left: 5px;
+    }
+}
+
+.localVideo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 150px;
+    margin: 10px 0px 0px 10px;
+}
+
+.video{
+    width: 300px;
+    height: 100%;
+    background-color: rgb(190, 190, 190);
+}
+.video:hover{
+    cursor: pointer;
+}
+.video video{
+    width: 100%;
+    height: 100%;
+}
+.info{
+    height: 100%;
+    margin-left: 20px;
+}
+.info:hover{
+    cursor: default;
+}
+.title{
+    margin-top: 5px;
+    font-size: 21px;
+}
+.videoInfo{
+    margin-top: 10px;
+    display: flex;
+    font-size: 15px;
+}
+.videoInfo > div:first-child{
+    margin-right: 50px;
+}
+
+.ownerInfo{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.ownerInfo > div:first-child{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: rgb(190, 190, 190);
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ownerInfo > div:first-child img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.ownerInfo > div:first-child img:hover{
+    cursor: pointer;
+}

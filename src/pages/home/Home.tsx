@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 
 import Header from "../../components/header/Header"
 import Profile from "../../components/profile/profile"
@@ -12,7 +12,6 @@ type StateData = {
 
 function Home(){
     const State = useSelector(state => state) as StateData
-    const dispatch = useDispatch()
 
     return(
         <>

@@ -17,7 +17,7 @@ function Profile(){
             :
                 <>
                     <Link to="/profile">Profile</Link>
-                    <Link to="/upload">Upload</Link>
+                    <Link to="/historic">Historic</Link>
                     <Link to="/signout">Sign Out</Link>
                 </>
             }

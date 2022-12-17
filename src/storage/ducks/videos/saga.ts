@@ -41,6 +41,7 @@ function uploadVideo(data: Omit<UploadVideo, "navigate">){
 export function* GetVideos(){
     try {
         const response: ResponseData = yield call(getVideos)
+        
         yield put(loadSuccess(response.data.videos))
     } catch (error) {
         yield put(loadFailure())
@@ -53,11 +54,12 @@ export function* UploadVideo({ payload }: ReturnType<typeof uploadRequest>){
     try {
         const response: ResponseDataUV = yield call(uploadVideo, { file: file, title: title })
         navigate("/")
+        navigate(0)
         yield put(uploadSuccess())
     } catch (error) {
         alert("Try again")
         yield put(uploadFailure())
-    } 
+    }
 }
 
 export function* UpdateVisualizations({ payload }: ReturnType<typeof updateRequest>){

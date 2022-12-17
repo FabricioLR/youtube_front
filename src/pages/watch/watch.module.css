@@ -57,6 +57,10 @@
     font-size: 30px;
 }
 
+#title:hover{
+    cursor: default;
+}
+
 #videoInfo{
     width: 100%;
     display: flex;
@@ -67,12 +71,19 @@
     font-size: 13px;
 }
 
+#videoInfo:hover{
+    cursor: default;
+}
+
 #owner{
     width: 100%;
     display: flex;
     margin-top: 10px;
     margin-left: 5px;
     align-items: center;
+}
+#owner:hover{
+    cursor: default;
 }
 #owner > div:first-child{
     width: 75%;
@@ -92,6 +103,9 @@
     align-items: center;
     background-color: rgb(190, 190, 190);
     margin-right: 10px;
+}
+#ownerImage:hover{
+    cursor: pointer;
 }
 #ownerImage img{
     width: 100%;

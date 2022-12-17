@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import useQuery from "../../context/query"
 import { Video, VideosState } from "../../storage/ducks/videos/types"
@@ -6,6 +6,8 @@ import style from "./watch.module.css"
 import ProfileImage from "../../images/profile.png"
 import Header from "../../components/header/Header"
 import Profile from "../../components/profile/profile"
+import { AuthContex } from "../../context/auth"
+import { useNavigate } from "react-router-dom"
 
 type StateData = {
     videos: VideosState
@@ -15,9 +17,10 @@ function Watch(){
     const [video, setVideo] = useState<Video | null>(null)
     const query = useQuery()
     const State = useSelector(state => state) as StateData
+    const { user } = useContext(AuthContex)
+    const navigate = useNavigate()
 
     function getVideo(){
-        console.log(State)
         const result = State.videos.data.filter(video => video.id == query.get("v"))
         setVideo(result[0])
     }
@@ -44,7 +47,13 @@ function Watch(){
                 </div>
                 <div id={style.owner}>
                     <div>
-                        <div id={style.ownerImage}>
+                        <div id={style.ownerImage} onClick={() => {
+                            if (video?.user.id == user?.id){
+                                navigate("/profile")
+                            } else {
+                                navigate("/publicProfile?u=" + video?.user.id)
+                            }
+                        }}>
                             <img src={video?.user.foto_url == "" ? ProfileImage : video?.user.foto_url} alt="" />
                         </div>
                         <div id={style.ownerName}>

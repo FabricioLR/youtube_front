@@ -7,6 +7,9 @@ import Upload from "./pages/upload/Upload"
 import SignOut from "./pages/auth/signout/SignOut"
 import Profile from "./pages/profile/Profile"
 import Watch from "./pages/watch/Watch"
+import Search from "./pages/search/Search"
+import PublicProfile from "./pages/publicProfile/PublicProfile"
+import Historic from "./pages/historic/Historic"
 
 function App(){
     return(
@@ -19,6 +22,9 @@ function App(){
                 <Route path="/signout" element={<SignOut/>}/>
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="/watch" element={<Watch/>}/>
+                <Route path="/search" element={<Search/>}/>
+                <Route path="/publicProfile" element={<PublicProfile/>}/>
+                <Route path="/historic" element={<Historic/>}/>
             </Routes>
         </BrowserRouter>
     )

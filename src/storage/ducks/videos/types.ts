@@ -19,9 +19,11 @@ export type Video = {
     id: string
     deslike: number
     like: number
+    createdAt: string
     user: {
         name: string
         foto_url: string
+        id: string
     }
 }
 
