@@ -1,5 +1,5 @@
 import { SearchVideos } from "../../../storage/ducks/search/types"
-import style from "./SearchedVideo.module.css"
+import style from "./searchedVideo.module.css"
 import ProfileImage from "../../../images/profile.png"
 import { useDispatch } from "react-redux"
 import { VideosTypes } from "../../../storage/ducks/videos/types"
