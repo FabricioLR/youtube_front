@@ -1,74 +1,61 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import useQuery from "../../context/query"
-import { Video, VideosState } from "../../storage/ducks/videos/types"
 import style from "./watch.module.css"
-import ProfileImage from "../../images/profile.png"
 import Header from "../../components/header/Header"
 import Profile from "../../components/profile/profile"
-import { AuthContex } from "../../context/auth"
 import { useNavigate } from "react-router-dom"
+import { CommentsState, CommentsTypes } from "../../storage/ducks/comments/types"
+import Comment from "../../components/comment/Comment"
+import { useDispatch } from "react-redux"
+import { VideoState, VideoTypes } from "../../storage/ducks/video/types"
+import WatchVideo from "../../components/video/watchVideo/WatchVideo"
 
 type StateData = {
-    videos: VideosState
+    video: VideoState
+    comments: CommentsState
 }
 
 function Watch(){
-    const [video, setVideo] = useState<Video | null>(null)
+    const [comment, setComment] = useState("")
     const query = useQuery()
     const State = useSelector(state => state) as StateData
-    const { user } = useContext(AuthContex)
-    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
-    function getVideo(){
-        const result = State.videos.data.filter(video => video.id == query.get("v"))
-        setVideo(result[0])
+    function sendComment(){
+        if (comment != ""){
+            dispatch({ type: CommentsTypes.SEND_REQUEST, payload: { videoId: query.get("v"), comment }})
+            setComment("")
+        }
     }
 
     useEffect(() => {
-        if (State.videos.data.length != 0){
-            getVideo()
-        }
-    })
+        dispatch({ type: VideoTypes.LOAD_REQUEST, payload: { videoId: query.get("v") }})
+        dispatch({ type: CommentsTypes.LOAD_REQUEST, payload: { videoId: query.get("v") } })
+    }, [])
 
     return(
         <>
             <Header/>
             <Profile/>
-            <div id={style.localVideo}>
-                <div id={style.video}>
-                    <video src={video?.url} controls></video>
+            {
+                State.video.data ? 
+                    <WatchVideo video={State.video.data}/>
+                :
+                    <div id={style.localVideo}></div>
+            }
+            <div id={style.comments}>
+                <div id={style.sendComment}>
+                    <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} onKeyUp={(key) => {
+                        if(key.key == "Enter"){
+                            sendComment()
+                        }
+                    }}/>
+                    <button onClick={sendComment}>Send</button>
                 </div>
-                <div id={style.title}>
-                    <p>{video?.title}</p>
-                </div>
-                <div id={style.videoInfo}>
-                    <p>{video?.visualizations} visualizações - {"date"}</p>
-                </div>
-                <div id={style.owner}>
-                    <div>
-                        <div id={style.ownerImage} onClick={() => {
-                            if (video?.user.id == user?.id){
-                                navigate("/profile")
-                            } else {
-                                navigate("/publicProfile?u=" + video?.user.id)
-                            }
-                        }}>
-                            <img src={video?.user.foto_url == "" ? ProfileImage : video?.user.foto_url} alt="" />
-                        </div>
-                        <div id={style.ownerName}>
-                            <p>{video?.user.name}</p>
-                        </div>
-                    </div>
-                    <div>
-                        <div id={style.likes}>
-                            <p>{video?.like} likes</p>
-                        </div>
-                        <div id={style.deslikes}>
-                            <p>{video?.deslike} deslikes</p>
-                        </div>
-                    </div>
-                </div>
+                {
+                    State.comments.data?.map(comment => <Comment comment={comment}/>) 
+                }
             </div>
         </>
     )

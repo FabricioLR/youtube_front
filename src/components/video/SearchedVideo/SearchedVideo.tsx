@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import { AuthContex } from "../../../context/auth"
 import { HistoricTypes } from "../../../storage/ducks/historic/types"
+import { CommentsTypes } from "../../../storage/ducks/comments/types"
 
 type SearchedVideoProps = {
     video: SearchVideos
@@ -46,7 +47,12 @@ function SearchedVideo(props: SearchedVideoProps){
 
     return(
         <div id={props.video.id} className={style.localVideo}>
-            <div className={style.video} onClick={() => {dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: props.video.id});dispatch({ type: HistoricTypes.ADD_REQUEST, payload: { videoId: props.video.id }});navigate("/watch?v=" + props.video.id)}}>
+            <div className={style.video} onClick={() => {
+                dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: props.video.id})
+                dispatch({ type: HistoricTypes.ADD_REQUEST, payload: { videoId: props.video.id }})
+                //dispatch({ type: CommentsTypes.LOAD_REQUEST, payload: { videoId: props.video.id } })
+                navigate("/watch?v=" + props.video.id)
+            }}>
                 <video src={props.video.url} />
             </div>
             <div className={style.info}>

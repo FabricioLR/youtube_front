@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Loading from "../../../components/loading/Loading"
 import { AuthContex } from "../../../context/auth"
 import style from "./signup.module.css"
 
@@ -8,6 +9,7 @@ function SignUp(){
     const [ password, setPassword ] = useState("")
     const [ email, setEmail ] = useState("")
     const [ name, setName ] = useState("")
+    const [load, setLoad] = useState(false)
     const { Register } = useContext(AuthContex)
     const navigate = useNavigate()
 
@@ -20,17 +22,20 @@ function SignUp(){
     }
 
     async function signUp(){
+        setLoad(true)
         await Register({
             email,
             password,
             name,
             navigate
         })
+        setLoad(false)
     }
 
     return(
         <div id={style.signup}>
             <form id={style.form} onSubmit={(e) => {e.preventDefault(); signUp()}}>
+                <Loading active={load}/>
                 <p>Bem Vindo</p>
                 <div id={style.name}>
                     <input type="text" placeholder="Name" required onChange={(e) => setName(e.target.value)}/>

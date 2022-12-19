@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { CommentsTypes } from "../../../storage/ducks/comments/types"
 import { HistoricTypes } from "../../../storage/ducks/historic/types"
 import { Video, VideosTypes } from "../../../storage/ducks/videos/types"
 import style from "./profileVideos.module.css"
@@ -42,7 +43,12 @@ function ProfileVideos(data: ProfileVideosData){
     
     return(
         <div id={style.localVideo}>
-            <div id={style.video} onClick={() => {dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: data.video.id});dispatch({ type: HistoricTypes.ADD_REQUEST, payload: { videoId: data.video.id }});navigate("/watch?v=" + data.video.id)}}>
+            <div id={style.video} onClick={() => {
+                dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: data.video.id})
+                dispatch({ type: HistoricTypes.ADD_REQUEST, payload: { videoId: data.video.id }})
+                //dispatch({ type: CommentsTypes.LOAD_REQUEST, payload: { videoId: data.video.id } })
+                navigate("/watch?v=" + data.video.id)
+            }}>
                 <video src={data.video.url}></video>
             </div>
             <div id={style.title}>

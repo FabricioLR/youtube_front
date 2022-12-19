@@ -8,6 +8,8 @@ import { VideosState } from "../../storage/ducks/videos/types"
 import style from "./publicProfile.module.css"
 import ProfileImage from "../../images/profile.png"
 import ProfileVideos from "../../components/video/ProfileVideos/ProfileVideos"
+import Header from "../../components/header/Header"
+import Profile from "../../components/profile/profile"
 
 type StateData = {
     user: UserState
@@ -24,6 +26,8 @@ function PublicProfile(){
 
     return(
         <div>
+            <Header/>
+            <Profile/>
             <div id={style.profile}>
                 <div id={style.profileInfo}>
                     <div id={style.image}>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { CommentsTypes } from "../../../storage/ducks/comments/types"
 import { Video, VideosTypes } from "../../../storage/ducks/videos/types"
 import style from "./historicVideo.module.css"
 
@@ -41,7 +42,11 @@ function HistoricVideo(props: HistoricVideoProps){
 
     return(
         <div className={style.localVideo}>
-            <div className={style.video} onClick={() => {dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: props.video.id});;navigate("/watch?v=" + props.video.id)}}>
+            <div className={style.video} onClick={() => {
+                dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: props.video.id})
+                //dispatch({ type: CommentsTypes.LOAD_REQUEST, payload: { videoId: props.video.id } })
+                navigate("/watch?v=" + props.video.id)
+            }}>
                 <video src={props.video.url}></video>
             </div>
             <div className={style.title}>

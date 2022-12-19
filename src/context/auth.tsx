@@ -69,7 +69,7 @@ function AuthProvider(props: AuthProviderProps){
                 data.navigate("/")
             }
         } catch (error: any) {
-            alert(error.response.data.error)
+            //alert(error.response.data.error)
         }
     }
 
@@ -88,7 +88,7 @@ function AuthProvider(props: AuthProviderProps){
                 data.navigate("/")
             }
         } catch (error: any) {
-            alert(error.response.data.error)
+            //alert(error.response.data.error)
         }
     }
 
@@ -111,8 +111,6 @@ function AuthProvider(props: AuthProviderProps){
                 }
             })
 
-            console.log(response.data)
-
             if(response.status == 200){
                 setUser({
                     name: response.data.user.name,
@@ -131,15 +129,19 @@ function AuthProvider(props: AuthProviderProps){
         formData.append("file", data.file)
         
         try {
-            const response = await api.post("ChangeUserImage", formData, {
+            const response = await api.post<Omit<AuthResponseData, "token">>("ChangeUserImage", formData, {
                 headers: {
                     token: sessionStorage.getItem("token")
                 }
             })
 
             if (response.status == 200){
-                alert("success")
-                window.location.reload()
+                setUser({
+                    name: response.data.user.name,
+                    foto_url: response.data.user.foto_url,
+                    id: response.data.user.id,
+                    userVideos: response.data.user.userVideos
+                })
             }
         } catch (error) {
             console.log(error)

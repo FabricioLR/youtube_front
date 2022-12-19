@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import style from "./profile.module.css"
 
 function Profile(){
-    const { user } = useContext(AuthContex)
+    const { user, SignOut } = useContext(AuthContex)
 
     return(
         <div id={style.profile}>
@@ -18,7 +18,7 @@ function Profile(){
                 <>
                     <Link to="/profile">Profile</Link>
                     <Link to="/historic">Historic</Link>
-                    <Link to="/signout">Sign Out</Link>
+                    <Link to="/" onClick={() => SignOut()}>Sign Out</Link>
                 </>
             }
         </div>

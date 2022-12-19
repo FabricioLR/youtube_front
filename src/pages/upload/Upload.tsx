@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { VideosState, VideosTypes } from "../../storage/ducks/videos/types";
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/loading/Loading";
 
 type StateData = {
     videos: VideosState
@@ -15,14 +16,17 @@ function Upload(){
     const dispatch = useDispatch()
     const [ title, setTitle ] = useState("")
     const [ file, setFile ] = useState(null)
+    const [ load, setLoad ] = useState(false)
 
     async function uploadVideo(){
+        setLoad(true)
         dispatch({ type: VideosTypes.UPLOAD_REQUEST, payload: { title, file, navigate }})
     }
 
     return (
         <div id={style.upload}>
             <form onSubmit={(e) => {e.preventDefault(); uploadVideo()}} id={style.form}>
+                <Loading active={load}/>
                 <p>Upload Video</p>
                 <div id={style.title}>
                     <input type="text" placeholder="Title" required onChange={(e) => setTitle(e.target.value)}/>

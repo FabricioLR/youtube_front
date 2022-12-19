@@ -1,0 +1,44 @@
+import { User } from "../../storage/ducks/user/types"
+import { Video } from "../../storage/ducks/videos/types"
+import style from "./comment.module.css"
+import ProfileImage from "../../images/profile.png"
+import { useNavigate } from "react-router-dom"
+import { useContext } from "react"
+import { AuthContex } from "../../context/auth"
+
+type CommentProps = {
+    comment: {
+        comment: string
+        user: Omit<User, "userVideos">
+    }
+    
+}
+
+function Comment(props: CommentProps){
+    const navigate = useNavigate()
+    const { user } = useContext(AuthContex)
+
+    return(
+        <div className={style.localComment}>
+            <div className={style.owner} onClick={() => {
+                if (props.comment.user.id == user?.id){
+                    navigate("/profile")
+                } else {
+                    navigate("/publicProfile?u=" + props.comment.user.id)
+                }
+            }}>
+                <img src={props.comment.user.foto_url == "" ? ProfileImage : props.comment.user.foto_url} alt="" />
+            </div>
+            <div>
+                <div className={style.ownerName}>
+                    <p>{props.comment.user.name}</p>
+                </div>
+                <div className={style.comment}>
+                    <p>{props.comment.comment}</p>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Comment

@@ -6,6 +6,7 @@ import { Video, VideosTypes } from "../../../storage/ducks/videos/types"
 import { useContext, useEffect, useState } from "react"
 import { AuthContex } from "../../../context/auth"
 import { HistoricTypes } from "../../../storage/ducks/historic/types"
+import { CommentsTypes } from "../../../storage/ducks/comments/types"
 
 type HomeVideoProps = {
     data: Video
@@ -45,7 +46,12 @@ function HomeVideo(props: HomeVideoProps){
 
     return (
         <div className={style.localVideo} id={props.data.id}>
-            <div onClick={() => {dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: props.data.id});dispatch({ type: HistoricTypes.ADD_REQUEST, payload: { videoId: props.data.id }});navigate("/watch?v=" + props.data.id)}}>
+            <div onClick={() => {
+                dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: props.data.id})
+                dispatch({ type: HistoricTypes.ADD_REQUEST, payload: { videoId: props.data.id }})
+                //dispatch({ type: CommentsTypes.LOAD_REQUEST, payload: { videoId: props.data.id } })
+                navigate("/watch?v=" + props.data.id)
+            }}>
                 <video src={props.data.url}></video>
             </div>
             <div className={style.title}>

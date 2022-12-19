@@ -1,21 +1,29 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Header from "../../components/header/Header"
 import ProfileVideos from "../../components/video/ProfileVideos/ProfileVideos"
 import { AuthContex } from "../../context/auth"
 import ProfileImage from "../../images/profile.png"
 import style from "./profile.module.css"
+import ProfileMenu from "../../components/profile/profile"
+import Loading from "../../components/loading/Loading"
 
 function Profile(){
     const { user, ChangeProfileImage } = useContext(AuthContex)
     const [file, setFile] = useState(null)
+    const [load, setLoad] = useState(false)
     const navigate = useNavigate()
 
     async function ChangeImage(){
+        setLoad(true)
         await ChangeProfileImage({ file })
+        setLoad(false)
     }
 
     return (
         <>
+        <Header/>
+        <ProfileMenu/>
             {
                 user ? 
                     <div>
@@ -30,6 +38,7 @@ function Profile(){
                             </div>
                             <div id={style.edit}>
                                 <form onSubmit={(e) => {e.preventDefault(); ChangeImage()}}>
+                                    <Loading active={load}/>
                                     <div id={style.changeImage}>
                                         <label>Select profile image</label>
                                         <input type="file" onChange={(e: any) => setFile(e.target.files[0])} required/>

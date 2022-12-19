@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom"
 import { call, put } from "redux-saga/effects"
 import api from "../../../context/api"
 import { loadSuccess, loadFailure, uploadRequest, uploadFailure, uploadSuccess, updateSuccess, updateFailure, updateRequest } from "./actions"
