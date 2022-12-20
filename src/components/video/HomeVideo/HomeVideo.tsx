@@ -59,7 +59,7 @@ function HomeVideo(props: HomeVideoProps){
             </div>
             <div className={style.videoInfo}>
                 <div>
-                    <p>{props.data.visualizations} visualizações</p>
+                    <p>{props.data.visualizations} visualizations</p>
                 </div>
                 <div>
                     <p>{time[0]}</p>

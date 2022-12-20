@@ -56,7 +56,7 @@ function ProfileVideos(data: ProfileVideosData){
             </div>
             <div id={style.videoInfo}>
                 <div>
-                    <p>{data.video.visualizations} visualizações</p>
+                    <p>{data.video.visualizations} visualizations</p>
                 </div>
                 <div>
                     <p>{time[0]}</p>

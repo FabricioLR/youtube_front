@@ -2,6 +2,8 @@ export enum VideoTypes {
     "LOAD_REQUEST" = "@video/LOAD_REQUEST",
     "LOAD_SUCCESS" = "@video/LOAD_SUCCESS",
     "LOAD_FAILURE" = "@video/LOAD_FAILURE",
+
+    "UPDATE_REQUEST" = "@video/UPDATE_REQUEST",
 }
 
 export type Video = {
@@ -21,6 +23,10 @@ export type Video = {
 
 export type GetVideo = {
     videoId: string
+}
+export type UpdateVideo = {
+    videoId: string
+    type: string
 }
 
 export type VideoState = {

@@ -6,6 +6,7 @@ import ProfileImage from "../../images/profile.png"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { SearchTypes } from "../../storage/ducks/search/types"
+import { FaSistrix } from "react-icons/fa"
 
 function Header(){
     const [search, setSearch] = useState("")
@@ -39,11 +40,11 @@ function Header(){
                         }
                     }}/>
                     <div onClick={Search}>
-                        <span>S</span>
+                        <FaSistrix/>
                     </div>
                 </div>
                 <div id={style.searchMenu}>
-                    <span>S</span>
+                    <FaSistrix/>
                 </div>
                 { user ?
                     <div id={style.profile} onClick={profile}>

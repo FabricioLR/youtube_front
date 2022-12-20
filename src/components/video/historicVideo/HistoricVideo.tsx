@@ -54,7 +54,7 @@ function HistoricVideo(props: HistoricVideoProps){
             </div>
             <div className={style.videoInfo}>
                 <div>
-                    <p>{props.video.visualizations} visualizações</p>
+                    <p>{props.video.visualizations} visualizations</p>
                 </div>
                 <div>
                     <p>{time[0]}</p>

@@ -1,3 +1,36 @@
+@media (max-width: 1150px) {
+    html #videos{
+        grid-template-columns: repeat(3, 300px);
+    }
+}
+@media (max-width: 1017px) {
+    html #videos{
+        grid-template-columns: repeat(2, 350px);
+    }
+}
+
+@media (max-width: 805px) {
+    html #videos{
+        grid-template-columns: repeat(1, 100%);
+    }
+}
+
+@media (max-width: 850px) {
+    html #profile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    html #profileInfo{
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+    html #image{
+        margin-top: 30px;
+    }
+}   
+
 #profile{
     display: flex;
     justify-content: space-between;

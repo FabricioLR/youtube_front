@@ -1,3 +1,20 @@
+@media (max-width: 1150px) {
+    html #localVideo{
+        width: 300px;
+    }
+}
+@media (max-width: 1017px) {
+    html #localVideo{
+        width: 350px;
+    }
+}
+
+@media (max-width: 805px) {
+    html #localVideo{
+        width: 100%;
+    }
+}
+
 #localVideo{
     width: 250px;
 }

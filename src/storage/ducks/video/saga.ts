@@ -1,7 +1,7 @@
 import { call, put } from "redux-saga/effects"
 import api from "../../../context/api"
-import { loadSuccess, loadFailure, loadRequest } from "./actions"
-import { GetVideo,  Video } from "./types"
+import { loadSuccess, loadFailure, loadRequest, updateRequest } from "./actions"
+import { GetVideo,  UpdateVideo,  Video } from "./types"
 
 type ResponseData = {
     data: {
@@ -15,6 +15,13 @@ function getVideo(data: GetVideo){
     })
 }
 
+function updateVideo(data: UpdateVideo){
+    api.post("AddFeedback", {
+        videoId: data.videoId,
+        type: data.type
+    })
+}
+
 export function* GetVideo({ payload }: ReturnType<typeof loadRequest>){
     const { videoId } = payload as any
     
@@ -24,5 +31,15 @@ export function* GetVideo({ payload }: ReturnType<typeof loadRequest>){
     } catch (error) {
         console.log(error)
         yield put(loadFailure())
+    } 
+}
+
+export function* UpdateVideo({ payload }: ReturnType<typeof updateRequest>){
+    const { videoId, type } = payload as any
+    
+    try {
+        yield call(updateVideo, { videoId, type })
+    } catch (error) {
+        console.log(error)
     } 
 }
