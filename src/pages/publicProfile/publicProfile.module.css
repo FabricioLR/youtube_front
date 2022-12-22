@@ -80,6 +80,7 @@
     width: 95%;
     margin-top: 20px;
     font-size: 20px;
+    margin-bottom: 20px;
 }
 #userVideos > p:hover{
     cursor: default;

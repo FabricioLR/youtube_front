@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import useQuery from "../../context/query"
 import style from "./watch.module.css"
 import Header from "../../components/header/Header"
 import Profile from "../../components/profile/profile"
-import { useNavigate } from "react-router-dom"
 import { CommentsState, CommentsTypes } from "../../storage/ducks/comments/types"
 import Comment from "../../components/comment/Comment"
 import { useDispatch } from "react-redux"
 import { VideoState, VideoTypes } from "../../storage/ducks/video/types"
 import WatchVideo from "../../components/video/watchVideo/WatchVideo"
+import { AuthContex } from "../../context/auth"
 
 type StateData = {
     video: VideoState
@@ -18,6 +18,7 @@ type StateData = {
 
 function Watch(){
     const [comment, setComment] = useState("")
+    const { user } = useContext(AuthContex)
     const query = useQuery()
     const State = useSelector(state => state) as StateData
     const dispatch = useDispatch()
@@ -45,14 +46,19 @@ function Watch(){
                     <div id={style.localVideo}></div>
             }
             <div id={style.comments}>
-                <div id={style.sendComment}>
-                    <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} onKeyUp={(key) => {
-                        if(key.key == "Enter"){
-                            sendComment()
-                        }
-                    }}/>
-                    <button onClick={sendComment}>Send</button>
-                </div>
+                { 
+                    user ? 
+                    <div id={style.sendComment}>
+                        <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} onKeyUp={(key) => {
+                            if(key.key == "Enter"){
+                                sendComment()
+                            }
+                        }}/>
+                        <button onClick={sendComment}>Send</button>
+                    </div>
+                    :
+                    <></>    
+                }
                 {
                     State.comments.data?.map(comment => <Comment comment={comment}/>) 
                 }

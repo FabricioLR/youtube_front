@@ -121,11 +121,19 @@ function WatchVideo(props: WatchVideoProps){
                 </div>
                 <div>
                     <div id={style.likes} onClick={Like}>
-                        <FaThumbsUp/>
+                        { isLiked ? 
+                                <FaThumbsUp color="#0066ff"/>
+                            :
+                                <FaThumbsUp/>
+                        }
                         <p>{like}</p>
                     </div>
                     <div id={style.deslikes} onClick={Deslike}>
-                        <FaThumbsDown/>
+                        { isDesliked ? 
+                                <FaThumbsDown color="#0066ff"/>
+                            :
+                                <FaThumbsDown/>
+                        }
                         <p>{deslike}</p>
                     </div>
                 </div>

@@ -34,7 +34,7 @@ function Header(){
                     </div>
                 </Link>
                 <div id={style.search}>
-                    <input type="text" name="" id="" onChange={(e) => setSearch(e.target.value)} onKeyUp={(key) => {
+                    <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} onKeyUp={(key) => {
                         if(key.key == "Enter"){
                             Search()
                         }
