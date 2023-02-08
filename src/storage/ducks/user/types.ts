@@ -9,7 +9,7 @@ export enum UserTypes {
 export type User = {
     id: string
     name: string
-    foto_url: string
+    profileImage: string
     userVideos: Omit<Video, "user">[]
 }
 

@@ -1,5 +1,4 @@
 import style from "./homeVideo.module.css"
-import ProfileImage from "../../../images/profile.png"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { Video, VideosTypes } from "../../../storage/ducks/videos/types"
@@ -7,6 +6,7 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContex } from "../../../context/auth"
 import { HistoricTypes } from "../../../storage/ducks/historic/types"
 import { CommentsTypes } from "../../../storage/ducks/comments/types"
+import ProfileImage from "../../profileImage/ProfileImage"
 
 type HomeVideoProps = {
     data: Video
@@ -66,7 +66,8 @@ function HomeVideo(props: HomeVideoProps){
                 </div>
             </div>
             <div className={style.ownerInfo}>
-                <div className={style.ownerProfileImage} onClick={() => { 
+            <ProfileImage divStyle={{cursor: "pointer", width: 35, height: 35, marginLeft: 5, marginRight: 10}} src={props.data.user.profileImage ? props.data.user.profileImage : ""} onClick={props.data.user.id == user?.id ? () => navigate("/profile") : () => navigate("/publicProfile?u=" + props.data.user.id)}/>
+                {/* <div className={style.ownerProfileImage} onClick={() => { 
                     if (props.data.user.id == user?.id){
                         navigate("/profile")
                     } else {
@@ -74,7 +75,7 @@ function HomeVideo(props: HomeVideoProps){
                     }
                     }}>
                     <img src={props.data.user.foto_url == "" ? ProfileImage : props.data.user.foto_url} alt="" />
-                </div>
+                </div> */}
                 <div>
                     <p>{props.data.user.name}</p>
                 </div>

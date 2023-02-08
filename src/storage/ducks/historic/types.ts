@@ -17,7 +17,7 @@ export enum HistoricTypes {
 export type Historic = {
     name: string
     id: string
-    foto_url: string
+    profileImage: string
     videos: Omit<Video, "user">[]
 }
 

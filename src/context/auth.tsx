@@ -2,9 +2,9 @@ import { createContext, ReactNode, useState, useEffect } from "react"
 import { Video } from "../storage/ducks/videos/types"
 import api from "./api"
 
-type User = {
+export type User = {
     name: string
-    foto_url: string
+    profileImage: string
     id: string
     userVideos: Omit<Video, "user">[] | []
 }
@@ -39,7 +39,7 @@ type AuthResponseData = {
     token: string
     user: {
         name: string
-        foto_url: string
+        profileImage: string
         id: string
         userVideos: Omit<Video, "user">[] | []
     }
@@ -61,7 +61,7 @@ function AuthProvider(props: AuthProviderProps){
             if (response.status == 200){
                 setUser({
                     name: response.data.user.name,
-                    foto_url: response.data.user.foto_url,
+                    profileImage: response.data.user.profileImage,
                     id: response.data.user.id,
                     userVideos: []
                 })
@@ -80,7 +80,7 @@ function AuthProvider(props: AuthProviderProps){
             if (response.status == 200){
                 setUser({
                     name: response.data.user.name,
-                    foto_url: response.data.user.foto_url,
+                    profileImage: response.data.user.profileImage,
                     id: response.data.user.id,
                     userVideos: response.data.user.userVideos
                 })
@@ -114,7 +114,7 @@ function AuthProvider(props: AuthProviderProps){
             if(response.status == 200){
                 setUser({
                     name: response.data.user.name,
-                    foto_url: response.data.user.foto_url,
+                    profileImage: response.data.user.profileImage,
                     id: response.data.user.id,
                     userVideos: response.data.user.userVideos
                 })
@@ -129,19 +129,16 @@ function AuthProvider(props: AuthProviderProps){
         formData.append("file", data.file)
         
         try {
-            const response = await api.post<Omit<AuthResponseData, "token">>("ChangeUserImage", formData, {
+            const response = await api.post<{ profileImage: string}>("ChangeUserImage", formData, {
                 headers: {
                     token: sessionStorage.getItem("token")
                 }
             })
 
             if (response.status == 200){
-                setUser({
-                    name: response.data.user.name,
-                    foto_url: response.data.user.foto_url,
-                    id: response.data.user.id,
-                    userVideos: response.data.user.userVideos
-                })
+                if (user){
+                    setUser({ ...user, profileImage: response.data.profileImage })
+                }
             }
         } catch (error) {
             console.log(error)

@@ -1,3 +1,5 @@
+import { User } from "../../../context/auth"
+
 export enum VideosTypes {
     "LOAD_REQUEST" = "@videos/LOAD_REQUEST",
     "LOAD_SUCCESS" = "@videos/LOAD_SUCCESS",
@@ -20,11 +22,7 @@ export type Video = {
     deslike: number
     like: number
     createdAt: string
-    user: {
-        name: string
-        foto_url: string
-        id: string
-    }
+    user: User
 }
 
 export type UploadVideo = {

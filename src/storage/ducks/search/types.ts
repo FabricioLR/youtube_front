@@ -1,3 +1,5 @@
+import { User } from "../../../context/auth"
+
 export enum SearchTypes {
     "LOAD_REQUEST" = "@search/LOAD_REQUEST",
     "LOAD_SUCCESS" = "@search/LOAD_SUCCESS",
@@ -12,11 +14,7 @@ export type SearchVideos = {
     deslike: number
     like: number
     createdAt: string
-    user: {
-        name: string
-        foto_url: string
-        id: string
-    }
+    user: User
 }
 
 export type Title = {

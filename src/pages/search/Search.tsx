@@ -16,7 +16,10 @@ function Search(){
             <Profile/>
             <div>
                 {
-                    State.search.data.map(video => <SearchedVideo video={video}/>)
+                    State.search.data.length > 0 ?
+                        State.search.data.map(video => <SearchedVideo video={video}/>)
+                    :
+                        null
                 }
             </div>
         </>

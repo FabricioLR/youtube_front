@@ -1,10 +1,8 @@
-import { User } from "../../storage/ducks/user/types"
-import { Video } from "../../storage/ducks/videos/types"
 import style from "./comment.module.css"
-import ProfileImage from "../../images/profile.png"
 import { useNavigate } from "react-router-dom"
 import { useContext } from "react"
-import { AuthContex } from "../../context/auth"
+import { AuthContex, User } from "../../context/auth"
+import ProfileImage from "../profileImage/ProfileImage"
 
 type CommentProps = {
     comment: {
@@ -20,7 +18,8 @@ function Comment(props: CommentProps){
 
     return(
         <div className={style.localComment}>
-            <div className={style.owner} onClick={() => {
+            <ProfileImage divStyle={{cursor: "pointer"}} src={props.comment.user.profileImage ? props.comment.user.profileImage : ""} onClick={props.comment.user.id == user?.id ? () => navigate("/profile") : () => navigate("/publicProfile?u=" + props.comment.user.id)}/>
+            {/* <div className={style.owner} onClick={() => {
                 if (props.comment.user.id == user?.id){
                     navigate("/profile")
                 } else {
@@ -28,7 +27,7 @@ function Comment(props: CommentProps){
                 }
             }}>
                 <img src={props.comment.user.foto_url == "" ? ProfileImage : props.comment.user.foto_url} alt="" />
-            </div>
+            </div> */}
             <div>
                 <div className={style.ownerName}>
                     <p>{props.comment.user.name}</p>

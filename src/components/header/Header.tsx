@@ -2,11 +2,11 @@ import { useContext, useState } from "react"
 import style from "./header.module.css"
 import styleProfile from "../profile/profile.module.css"
 import { AuthContex } from "../../context/auth"
-import ProfileImage from "../../images/profile.png"
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { SearchTypes } from "../../storage/ducks/search/types"
 import { FaSistrix } from "react-icons/fa"
+import ProfileImage from "../profileImage/ProfileImage"
 
 function Header(){
     const [search, setSearch] = useState("")
@@ -23,7 +23,6 @@ function Header(){
             dispatch({ type: SearchTypes.LOAD_REQUEST, payload: { title: search, navigate }})
         }
     }
-
 
     return(
         <header id={style.header}>
@@ -46,16 +45,7 @@ function Header(){
                 <div id={style.searchMenu}>
                     <FaSistrix/>
                 </div>
-                { user ?
-                    <div id={style.profile} onClick={profile}>
-                        <img src={user.foto_url == "" ? ProfileImage : user.foto_url} alt="" />
-                    </div>
-                    :
-                    <div id={style.profile} onClick={profile}>
-                        <img src={ProfileImage} alt="" />
-                    </div>
-                }
-                
+                <ProfileImage divStyle={{cursor: "pointer"}} src={user?.profileImage ? user?.profileImage : ""} onClick={profile}/>
             </div>
         </header>
     )

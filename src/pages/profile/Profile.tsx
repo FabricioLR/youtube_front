@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom"
 import Header from "../../components/header/Header"
 import ProfileVideos from "../../components/video/ProfileVideos/ProfileVideos"
 import { AuthContex } from "../../context/auth"
-import ProfileImage from "../../images/profile.png"
 import style from "./profile.module.css"
 import ProfileMenu from "../../components/profile/profile"
 import Loading from "../../components/loading/Loading"
+import ProfileImage from "../../components/profileImage/ProfileImage"
 
 function Profile(){
     const { user, ChangeProfileImage } = useContext(AuthContex)
@@ -29,9 +29,7 @@ function Profile(){
                     <div>
                         <div id={style.profile}>
                             <div id={style.profileInfo}>
-                                <div id={style.image}>
-                                    <img src={user.foto_url == "" ? ProfileImage : user.foto_url} alt="" />
-                                </div>
+                                <ProfileImage divStyle={{width: 160, height: 160}} src={user.profileImage ? user.profileImage : ""}/>
                                 <div id={style.name}>
                                     <p>{user.name}</p>
                                 </div>

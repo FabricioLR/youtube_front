@@ -1,6 +1,5 @@
 import { SearchVideos } from "../../../storage/ducks/search/types"
 import style from "./searchedVideo.module.css"
-import ProfileImage from "../../../images/profile.png"
 import { useDispatch } from "react-redux"
 import { VideosTypes } from "../../../storage/ducks/videos/types"
 import { useNavigate } from "react-router-dom"
@@ -8,6 +7,7 @@ import { useContext, useEffect, useState } from "react"
 import { AuthContex } from "../../../context/auth"
 import { HistoricTypes } from "../../../storage/ducks/historic/types"
 import { CommentsTypes } from "../../../storage/ducks/comments/types"
+import ProfileImage from "../../profileImage/ProfileImage"
 
 type SearchedVideoProps = {
     video: SearchVideos
@@ -68,7 +68,8 @@ function SearchedVideo(props: SearchedVideoProps){
                     </div>
                 </div>
                 <div className={style.ownerInfo}>
-                    <div onClick={() => {
+                <ProfileImage divStyle={{cursor: "pointer", width: 40, height: 40, marginRight: 10}} src={props.video.user.profileImage ? props.video.user.profileImage : ""} onClick={props.video.user.id == user?.id ? () => navigate("/profile") : () => navigate("/publicProfile?u=" + props.video.user.id)}/>
+                    {/* <div onClick={() => {
                         if (props.video.user.id == user?.id){
                             navigate("/profile")
                         } else {
@@ -76,7 +77,7 @@ function SearchedVideo(props: SearchedVideoProps){
                         }
                     }}>
                         <img src={props.video.user.foto_url == "" ? ProfileImage : props.video.user.foto_url} alt="" />
-                    </div>
+                    </div> */}
                     <div>
                         <p>{props.video.user.name}</p>
                     </div>
