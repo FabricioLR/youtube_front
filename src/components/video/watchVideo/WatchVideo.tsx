@@ -113,7 +113,7 @@ function WatchVideo(props: WatchVideoProps){
                             navigate("/publicProfile?u=" + props.video.user.id)
                         }
                     }}>
-                        <img src={props.video.user.foto_url == "" ? ProfileImage : props.video.user.foto_url} alt="" />
+                        <img src={props.video.user.profileImage == "" ? ProfileImage : props.video.user.profileImage} alt="" />
                     </div>
                     <div id={style.ownerName}>
                         <p>{props.video.user.name}</p>
