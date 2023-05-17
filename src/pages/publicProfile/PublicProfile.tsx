@@ -31,7 +31,7 @@ function PublicProfile(){
             <div id={style.profile}>
                 <div id={style.profileInfo}>
                     <div id={style.image}>
-                        <img src={State.user.data?.foto_url == "" ? ProfileImage : State.user.data?.foto_url} alt="" />
+                        <img src={State.user.data?.profileImage == "" ? ProfileImage : State.user.data?.profileImage} alt="" />
                     </div>
                     <div id={style.name}>
                         <p>{State.user.data?.name}</p>
