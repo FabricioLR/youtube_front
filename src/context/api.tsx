@@ -4,7 +4,7 @@ import axios from "axios"
 //"http://localhost:4000/"
 
 const api = axios.create({
-    baseURL: "http://localhost:4000/"
+    baseURL: "https://youtubeback-lm98.onrender.com"
 })
 
 export default api
