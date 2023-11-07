@@ -47,8 +47,8 @@ function HomeVideo(props: HomeVideoProps){
     return (
         <div className={style.localVideo} id={props.data.id}>
             <div onClick={() => {
-                dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: props.data.id})
-                dispatch({ type: HistoricTypes.ADD_REQUEST, payload: { videoId: props.data.id }})
+                dispatch({ type: VideosTypes.UPDATE_VISUALIZATIONS_REQUEST, payload: props.data.id})
+                dispatch({ type: HistoricTypes.ADD_TO_HISTORIC_REQUEST, payload: { videoId: props.data.id }})
                 //dispatch({ type: CommentsTypes.LOAD_REQUEST, payload: { videoId: props.data.id } })
                 navigate("/watch?v=" + props.data.id)
             }}>

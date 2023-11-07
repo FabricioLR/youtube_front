@@ -20,7 +20,7 @@ function Header(){
 
     function Search(){
         if (search != ""){
-            dispatch({ type: SearchTypes.LOAD_REQUEST, payload: { title: search, navigate }})
+            dispatch({ type: SearchTypes.SEARCH_REQUEST, payload: { title: search, navigate }})
         }
     }
 

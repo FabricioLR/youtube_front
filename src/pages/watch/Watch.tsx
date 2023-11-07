@@ -25,14 +25,14 @@ function Watch(){
 
     function sendComment(){
         if (comment != ""){
-            dispatch({ type: CommentsTypes.SEND_REQUEST, payload: { videoId: query.get("v"), comment }})
+            dispatch({ type: CommentsTypes.ADD_COMMENT_REQUEST, payload: { videoId: query.get("v"), comment }})
             setComment("")
         }
     }
 
     useEffect(() => {
-        dispatch({ type: VideoTypes.LOAD_REQUEST, payload: { videoId: query.get("v") }})
-        dispatch({ type: CommentsTypes.LOAD_REQUEST, payload: { videoId: query.get("v") } })
+        dispatch({ type: VideoTypes.GET_VIDEO_REQUEST, payload: { videoId: query.get("v") }})
+        dispatch({ type: CommentsTypes.GET_COMMENTS_REQUEST, payload: { videoId: query.get("v") } })
     }, [])
 
     return(

@@ -1,6 +1,6 @@
 import { action } from "typesafe-actions";
 import { SearchTypes, SearchVideos, Title } from "./types";
 
-export const loadRequest = (payload: Title) => action(SearchTypes.LOAD_REQUEST, { payload })
-export const loadSuccess = (data: SearchVideos[]) => action(SearchTypes.LOAD_SUCCESS, { data })
-export const loadFailure = () => action(SearchTypes.LOAD_FAILURE)
+export const searchRequest = (payload: Title) => action(SearchTypes.SEARCH_REQUEST, { payload })
+export const searchSuccess = (data: SearchVideos[]) => action(SearchTypes.SEARCH_SUCCESS, { data })
+export const searchFailure = () => action(SearchTypes.SEARCH_FAILURE)

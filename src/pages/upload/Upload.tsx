@@ -20,7 +20,7 @@ function Upload(){
 
     async function uploadVideo(){
         setLoad(true)
-        dispatch({ type: VideosTypes.UPLOAD_REQUEST, payload: { title, file, navigate }})
+        dispatch({ type: VideosTypes.UPLOAD_VIDEO_REQUEST, payload: { title, file, navigate }})
     }
 
     return (

@@ -48,8 +48,8 @@ function SearchedVideo(props: SearchedVideoProps){
     return(
         <div id={props.video.id} className={style.localVideo}>
             <div className={style.video} onClick={() => {
-                dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: props.video.id})
-                dispatch({ type: HistoricTypes.ADD_REQUEST, payload: { videoId: props.video.id }})
+                dispatch({ type: VideosTypes.UPDATE_VISUALIZATIONS_REQUEST, payload: props.video.id})
+                dispatch({ type: HistoricTypes.ADD_TO_HISTORIC_REQUEST, payload: { videoId: props.video.id }})
                 //dispatch({ type: CommentsTypes.LOAD_REQUEST, payload: { videoId: props.video.id } })
                 navigate("/watch?v=" + props.video.id)
             }}>

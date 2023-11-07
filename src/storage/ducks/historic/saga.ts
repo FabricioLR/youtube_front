@@ -1,6 +1,6 @@
 import { call, put } from "redux-saga/effects"
 import api from "../../../context/api"
-import { loadSuccess, loadFailure, addRequest, addFailure, addSuccess, clearSuccess, clearFailure } from "./actions"
+import { addToHistoricFailure, addToHistoricRequest, addToHistoricSuccess, clearHistoricFailure, clearHistoricSuccess, getHistoricFailure, getHistoricSuccess } from "./actions"
 import { Historic } from "./types"
 
 type ResponseData = {
@@ -38,10 +38,10 @@ export function* GetHistoric(){
 
         console.log(response.data)
     
-        yield put(loadSuccess(response.data.historic))
+        yield put(getHistoricSuccess(response.data.historic))
     } catch (error) {
         alert("Try again")
-        yield put(loadFailure())
+        yield put(getHistoricFailure())
     }
 }
 
@@ -53,16 +53,16 @@ function addHistoric(data: AddHistoricData){
     })
 }
 
-export function* AddHistoric({ payload }: ReturnType<typeof addRequest>){
+export function* AddHistoric({ payload }: ReturnType<typeof addToHistoricRequest>){
     const token = sessionStorage.getItem("token")
     const { videoId } = payload as any
 
     try {
         const response: ResponseData = yield call(addHistoric, { token, videoId })
     
-        yield put(addSuccess())
+        yield put(addToHistoricSuccess())
     } catch (error) {
-        yield put(addFailure())
+        yield put(addToHistoricFailure())
     }
 }
 
@@ -80,8 +80,8 @@ export function* ClearHistoric(){
     try {
         const response: ResponseData = yield call(clearHistoric, { token })
     
-        yield put(clearSuccess())
+        yield put(clearHistoricSuccess())
     } catch (error) {
-        yield put(clearFailure())
+        yield put(clearHistoricFailure())
     }
 }

@@ -18,11 +18,11 @@ function Historic(){
     const { user } = useContext(AuthContex)
 
     useEffect(() => {
-        dispatch({ type: HistoricTypes.LOAD_REQUEST})
+        dispatch({ type: HistoricTypes.GET_HISTORIC_REQUEST})
     }, [])
 
     function Clear(){
-        dispatch({ type: HistoricTypes.CLEAR_REQUEST })
+        dispatch({ type: HistoricTypes.CLEAR_HISTORIC_REQUEST })
     }
 
     return(

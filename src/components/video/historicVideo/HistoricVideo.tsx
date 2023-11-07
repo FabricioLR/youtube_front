@@ -43,7 +43,7 @@ function HistoricVideo(props: HistoricVideoProps){
     return(
         <div className={style.localVideo}>
             <div className={style.video} onClick={() => {
-                dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: props.video.id})
+                dispatch({ type: VideosTypes.UPDATE_VISUALIZATIONS_REQUEST, payload: props.video.id})
                 //dispatch({ type: CommentsTypes.LOAD_REQUEST, payload: { videoId: props.video.id } })
                 navigate("/watch?v=" + props.video.id)
             }}>

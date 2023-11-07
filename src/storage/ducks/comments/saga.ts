@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { call, put } from "redux-saga/effects"
 import api from "../../../context/api"
-import { loadSuccess, loadFailure, loadRequest, sendRequest, sendSuccess, sendFailure } from "./actions"
+import { addCommentFailure, addCommentRequest, addCommentSuccess, getCommentsFailure, getCommentsRequest, getCommentsSuccess } from "./actions"
 import { Comment, GetCommentsData, SendCommentData } from "./types"
 
 type ResponseData = {
@@ -34,25 +34,25 @@ function sendComment(data: SendCommentData){
 }
 
 
-export function* GetComments({ payload }: ReturnType<typeof loadRequest>){
+export function* GetComments({ payload }: ReturnType<typeof getCommentsRequest>){
     const { videoId } = payload as any
 
     try {
         const response: ResponseData = yield call(getComments, { videoId })
-        yield put(loadSuccess(response.data.comments))
+        yield put(getCommentsSuccess(response.data.comments))
     } catch (error) {
-        yield put(loadFailure())
+        yield put(getCommentsFailure())
     }
 }
 
-export function* SendComment({ payload }: ReturnType<typeof sendRequest>){
+export function* SendComment({ payload }: ReturnType<typeof addCommentRequest>){
     const { videoId, comment } = payload as any
     const token = sessionStorage.getItem("token")
 
     try {
         const response: ResponseDataS = yield call(sendComment, { videoId, comment, token })
-        yield put(sendSuccess(response.data.comment))
+        yield put(addCommentSuccess(response.data.comment))
     } catch (error) {
-        yield put(sendFailure())
+        yield put(addCommentFailure())
     }
 }

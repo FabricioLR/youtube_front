@@ -1,9 +1,9 @@
 import { User } from "../../../context/auth"
 
 export enum SearchTypes {
-    "LOAD_REQUEST" = "@search/LOAD_REQUEST",
-    "LOAD_SUCCESS" = "@search/LOAD_SUCCESS",
-    "LOAD_FAILURE" = "@search/LOAD_FAILURE",
+    "SEARCH_REQUEST" = "@search/SEARCH_REQUEST",
+    "SEARCH_SUCCESS" = "@search/SEARCH_SUCCESS",
+    "SEARCH_FAILURE" = "@search/SEARCH_FAILURE",
 }
 
 export type SearchVideos = {

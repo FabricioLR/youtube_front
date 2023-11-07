@@ -1,7 +1,8 @@
 import { call, put } from "redux-saga/effects"
 import api from "../../../context/api"
-import { loadSuccess, loadFailure, loadRequest, updateRequest } from "./actions"
-import { GetVideo,  UpdateVideo,  Video } from "./types"
+import { getVideoFailure, getVideoRequest, getVideoSuccess } from "./actions"
+import { GetVideo, UpdateVideo, Video } from "./types"
+import { updateVisualizationsRequest } from "../videos/actions"
 
 type ResponseData = {
     data: {
@@ -22,19 +23,19 @@ function updateVideo(data: UpdateVideo){
     })
 }
 
-export function* GetVideo({ payload }: ReturnType<typeof loadRequest>){
+export function* GetVideo({ payload }: ReturnType<typeof getVideoRequest>){
     const { videoId } = payload as any
     
     try {
         const response: ResponseData = yield call(getVideo, { videoId })
-        yield put(loadSuccess(response.data.video))
+        yield put(getVideoSuccess(response.data.video))
     } catch (error) {
         console.log(error)
-        yield put(loadFailure())
+        yield put(getVideoFailure())
     } 
 }
 
-export function* UpdateVideo({ payload }: ReturnType<typeof updateRequest>){
+export function* UpdateVideo({ payload }: ReturnType<typeof updateVisualizationsRequest>){
     const { videoId, type } = payload as any
     
     try {

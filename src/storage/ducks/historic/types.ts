@@ -1,17 +1,17 @@
 import { Video } from "../videos/types"
 
 export enum HistoricTypes {
-    "LOAD_REQUEST" = "@historic/LOAD_REQUEST",
-    "LOAD_SUCCESS" = "@historic/LOAD_SUCCESS",
-    "LOAD_FAILURE" = "@historic/LOAD_FAILURE",
+    "GET_HISTORIC_REQUEST" = "@historic/GET_HISTORIC_REQUEST",
+    "GET_HISTORIC_SUCCESS" = "@historic/GET_HISTORIC_SUCCESS",
+    "GET_HISTORIC_FAILURE" = "@historic/GET_HISTORIC_FAILURE",
 
-    "ADD_REQUEST" = "@historic/ADD_REQUEST",
-    "ADD_SUCCESS" = "@historic/ADD_SUCCESS",
-    "ADD_FAILURE" = "@historic/ADD_FAILURE",
+    "ADD_TO_HISTORIC_REQUEST" = "@historic/ADD_TO_HISTORIC_REQUEST",
+    "ADD_TO_HISTORIC_SUCCESS" = "@historic/ADD_TO_HISTORIC_SUCCESS",
+    "ADD_TO_HISTORIC_FAILURE" = "@historic/ADD_TO_HISTORIC_FAILURE",
 
-    "CLEAR_REQUEST" = "@historic/CLEAR_REQUEST",
-    "CLEAR_SUCCESS" = "@historic/CLEAR_SUCCESS",
-    "CLEAR_FAILURE" = "@historic/CLEAR_FAILURE",
+    "CLEAR_HISTORIC_REQUEST" = "@historic/CLEAR_HISTORIC_REQUEST",
+    "CLEAR_HISTORIC_SUCCESS" = "@historic/CLEAR_HISTORIC_SUCCESS",
+    "CLEAR_HISTORIC_FAILURE" = "@historic/CLEAR_HISTORIC_FAILURE",
 }
 
 export type Historic = {

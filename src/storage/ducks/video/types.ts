@@ -1,11 +1,11 @@
 import { User } from "../../../context/auth"
 
 export enum VideoTypes {
-    "LOAD_REQUEST" = "@video/LOAD_REQUEST",
-    "LOAD_SUCCESS" = "@video/LOAD_SUCCESS",
-    "LOAD_FAILURE" = "@video/LOAD_FAILURE",
+    "GET_VIDEO_REQUEST" = "@video/GET_VIDEO_REQUEST",
+    "GET_VIDEO_SUCCESS" = "@video/GET_VIDEO_SUCCESS",
+    "GET_VIDEO_FAILURE" = "@video/GET_VIDEO_FAILURE",
 
-    "UPDATE_REQUEST" = "@video/UPDATE_REQUEST",
+    "UPDATE_FEEDBACK_REQUEST" = "@video/UPDATE_REQUEST",
 }
 
 export type Video = {

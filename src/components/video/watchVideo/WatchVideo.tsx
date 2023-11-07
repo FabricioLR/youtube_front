@@ -55,20 +55,20 @@ function WatchVideo(props: WatchVideoProps){
         if (!isLiked && !isDesliked) {
             setLike(like + 1)
             setIsLiked(true)
-            dispatch({ type: VideoTypes.UPDATE_REQUEST, payload: { videoId: props.video.id, type: "like" }})
+            dispatch({ type: VideoTypes.UPDATE_FEEDBACK_REQUEST, payload: { videoId: props.video.id, type: "like" }})
         }
         if (!isLiked && isDesliked) {
             setLike(like + 1)
             setDeslike(deslike - 1)
             setIsDesliked(false)
             setIsLiked(true)
-            dispatch({ type: VideoTypes.UPDATE_REQUEST, payload: { videoId: props.video.id, type: "like" }})
-            dispatch({ type: VideoTypes.UPDATE_REQUEST, payload: { videoId: props.video.id, type: "removeDeslike" }})
+            dispatch({ type: VideoTypes.UPDATE_FEEDBACK_REQUEST, payload: { videoId: props.video.id, type: "like" }})
+            dispatch({ type: VideoTypes.UPDATE_FEEDBACK_REQUEST, payload: { videoId: props.video.id, type: "removeDeslike" }})
         }
         if (isLiked){
             setLike(like - 1)
             setIsLiked(false)
-            dispatch({ type: VideoTypes.UPDATE_REQUEST, payload: { videoId: props.video.id, type: "removeLike" }})
+            dispatch({ type: VideoTypes.UPDATE_FEEDBACK_REQUEST, payload: { videoId: props.video.id, type: "removeLike" }})
         }
     }
 
@@ -76,20 +76,20 @@ function WatchVideo(props: WatchVideoProps){
         if (!isDesliked && !isLiked) {
             setDeslike(deslike + 1)
             setIsDesliked(true)
-            dispatch({ type: VideoTypes.UPDATE_REQUEST, payload: { videoId: props.video.id, type: "deslike" }})
+            dispatch({ type: VideoTypes.UPDATE_FEEDBACK_REQUEST, payload: { videoId: props.video.id, type: "deslike" }})
         }
         if (!isDesliked && isLiked ) {
             setDeslike(deslike + 1)
             setLike(like - 1)
             setIsDesliked(true)
             setIsLiked(false)
-            dispatch({ type: VideoTypes.UPDATE_REQUEST, payload: { videoId: props.video.id, type: "deslike" }})
-            dispatch({ type: VideoTypes.UPDATE_REQUEST, payload: { videoId: props.video.id, type: "removeLike" }})
+            dispatch({ type: VideoTypes.UPDATE_FEEDBACK_REQUEST, payload: { videoId: props.video.id, type: "deslike" }})
+            dispatch({ type: VideoTypes.UPDATE_FEEDBACK_REQUEST, payload: { videoId: props.video.id, type: "removeLike" }})
         }
         if (isDesliked){
             setDeslike(deslike - 1)
             setIsDesliked(false)
-            dispatch({ type: VideoTypes.UPDATE_REQUEST, payload: { videoId: props.video.id, type: "removeDeslike" }})
+            dispatch({ type: VideoTypes.UPDATE_FEEDBACK_REQUEST, payload: { videoId: props.video.id, type: "removeDeslike" }})
         }
     }
 

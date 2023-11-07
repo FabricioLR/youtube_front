@@ -8,7 +8,7 @@ import AuthProvider from "./context/auth"
 import store from './storage'
 import { VideosTypes } from './storage/ducks/videos/types'
 
-store.dispatch({ type: VideosTypes.LOAD_REQUEST })
+store.dispatch({ type: VideosTypes.GET_VIDEOS_REQUEST })
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <Provider store={store}>

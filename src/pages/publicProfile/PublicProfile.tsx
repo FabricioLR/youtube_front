@@ -21,7 +21,7 @@ function PublicProfile(){
     const query = useQuery()
 
     useEffect(() => {
-        dispatch({ type: UserTypes.LOAD_REQUEST, payload: { userId: query.get("u") }})
+        dispatch({ type: UserTypes.GET_USER_REQUEST, payload: { userId: query.get("u") }})
     }, [])
 
     return(

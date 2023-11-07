@@ -14,17 +14,17 @@ import { GetVideo, UpdateVideo } from "./video/saga"
 
 export default function* rootSaga(){
     yield all([
-        takeLatest(VideosTypes.LOAD_REQUEST, GetVideos),
-        takeLatest(VideosTypes.UPLOAD_REQUEST, UploadVideo),
-        takeLatest(VideosTypes.UPDATE_REQUEST, UpdateVisualizations),
-        takeLatest(SearchTypes.LOAD_REQUEST, SearchVideos),
-        takeLatest(UserTypes.LOAD_REQUEST, GetUser),
-        takeLatest(HistoricTypes.LOAD_REQUEST, GetHistoric),
-        takeLatest(HistoricTypes.ADD_REQUEST, AddHistoric),
-        takeLatest(HistoricTypes.CLEAR_REQUEST, ClearHistoric),
-        takeLatest(CommentsTypes.LOAD_REQUEST, GetComments),
-        takeLatest(CommentsTypes.SEND_REQUEST, SendComment),
-        takeLatest(VideoTypes.LOAD_REQUEST, GetVideo),
-        takeLatest(VideoTypes.UPDATE_REQUEST, UpdateVideo)
+        takeLatest(VideosTypes.GET_VIDEOS_REQUEST, GetVideos),
+        takeLatest(VideosTypes.UPLOAD_VIDEO_REQUEST, UploadVideo),
+        takeLatest(VideosTypes.UPDATE_VISUALIZATIONS_REQUEST, UpdateVisualizations),
+        takeLatest(SearchTypes.SEARCH_REQUEST, SearchVideos),
+        takeLatest(UserTypes.GET_USER_REQUEST, GetUser),
+        takeLatest(HistoricTypes.GET_HISTORIC_REQUEST, GetHistoric),
+        takeLatest(HistoricTypes.ADD_TO_HISTORIC_REQUEST, AddHistoric),
+        takeLatest(HistoricTypes.CLEAR_HISTORIC_REQUEST, ClearHistoric),
+        takeLatest(CommentsTypes.GET_COMMENTS_REQUEST, GetComments),
+        takeLatest(CommentsTypes.ADD_COMMENT_REQUEST, SendComment),
+        takeLatest(VideoTypes.GET_VIDEO_REQUEST, GetVideo),
+        takeLatest(VideoTypes.UPDATE_FEEDBACK_REQUEST, UpdateVideo)
     ])
 }

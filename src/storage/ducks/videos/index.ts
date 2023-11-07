@@ -9,26 +9,26 @@ const INITIAL_STATE: VideosState = {
 
 const reducer: Reducer<VideosState> = (state = INITIAL_STATE, action) => {
     switch (action.type){
-        case VideosTypes.LOAD_REQUEST:
+        case VideosTypes.GET_VIDEOS_REQUEST:
             return { ...state, loading: true }
-        case VideosTypes.LOAD_SUCCESS:
+        case VideosTypes.GET_VIDEOS_SUCCESS:
             return { ...state, loading: false, error: false, data: action.payload.data }
-        case VideosTypes.LOAD_FAILURE:
+        case VideosTypes.GET_VIDEOS_FAILURE:
             return { ...state, loading: false, error: true, data: [] }
-        case VideosTypes.UPLOAD_REQUEST:
+        case VideosTypes.UPLOAD_VIDEO_REQUEST:
             return { ...state, loading: true }
-        case VideosTypes.UPLOAD_SUCCESS:
+        case VideosTypes.UPLOAD_VIDEO_SUCCESS:
             return { ...state, loading: false, error: false, }
-        case VideosTypes.UPLOAD_FAILURE:
+        case VideosTypes.UPLOAD_VIDEO_FAILURE:
             return { ...state, loading: false, error: true, }
-        case VideosTypes.UPDATE_REQUEST:
+        case VideosTypes.UPDATE_VISUALIZATIONS_REQUEST:
             return { ...state, loading: true }
-        case VideosTypes.UPDATE_SUCCESS:
+        case VideosTypes.UPDATE_VISUALIZATIONS_SUCCESS:
             var updatedVideo = state.data.filter(video => video.id == action.payload.videoId)
             updatedVideo[0].visualizations = updatedVideo[0].visualizations + 1
             const videos = state.data.filter(video => video.id == action.payload.videoId ? updatedVideo[0] : video)
             return { ...state, loading: false, error: false, data: videos }
-        case VideosTypes.UPDATE_FAILURE:
+        case VideosTypes.UPDATE_VISUALIZATIONS_FAILURE:
             return { ...state, loading: false, error: true, }
         default:
             return state

@@ -1,9 +1,9 @@
 import { Video } from "../videos/types"
 
 export enum UserTypes {
-    "LOAD_REQUEST" = "@user/LOAD_REQUEST",
-    "LOAD_SUCCESS" = "@user/LOAD_SUCCESS",
-    "LOAD_FAILURE" = "@user/LOAD_FAILURE",
+    "GET_USER_REQUEST" = "@user/GET_USER_REQUEST",
+    "GET_USER_SUCCESS" = "@user/GET_USER_SUCCESS",
+    "GET_USER_FAILURE" = "@user/GET_USER_FAILURE",
 }
 
 export type User = {

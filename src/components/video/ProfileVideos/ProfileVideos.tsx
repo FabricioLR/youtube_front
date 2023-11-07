@@ -44,8 +44,8 @@ function ProfileVideos(data: ProfileVideosData){
     return(
         <div id={style.localVideo}>
             <div id={style.video} onClick={() => {
-                dispatch({ type: VideosTypes.UPDATE_REQUEST, payload: data.video.id})
-                dispatch({ type: HistoricTypes.ADD_REQUEST, payload: { videoId: data.video.id }})
+                dispatch({ type: VideosTypes.UPDATE_VISUALIZATIONS_REQUEST, payload: data.video.id})
+                dispatch({ type: HistoricTypes.ADD_TO_HISTORIC_REQUEST, payload: { videoId: data.video.id }})
                 //dispatch({ type: CommentsTypes.LOAD_REQUEST, payload: { videoId: data.video.id } })
                 navigate("/watch?v=" + data.video.id)
             }}>

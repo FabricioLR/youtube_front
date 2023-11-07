@@ -1,13 +1,13 @@
 import { User } from "../user/types"
 
 export enum CommentsTypes {
-    "LOAD_REQUEST" = "@comments/LOAD_REQUEST",
-    "LOAD_SUCCESS" = "@comments/LOAD_SUCCESS",
-    "LOAD_FAILURE" = "@comments/LOAD_FAILURE",
+    "GET_COMMENTS_REQUEST" = "@comments/GET_COMMENTS_REQUEST",
+    "GET_COMMENTS_SUCCESS" = "@comments/GET_COMMENTS_SUCCESS",
+    "GET_COMMENTS_FAILURE" = "@comments/GET_COMMENTS_FAILURE",
 
-    "SEND_REQUEST" = "@comments/send_REQUEST",
-    "SEND_SUCCESS" = "@comments/send_SUCCESS",
-    "SEND_FAILURE" = "@comments/send_FAILURE",
+    "ADD_COMMENT_REQUEST" = "@comments/ADD_COMMENT_REQUEST",
+    "ADD_COMMENT_SUCCESS" = "@comments/ADD_COMMENT_SUCCESS",
+    "ADD_COMMENT_FAILURE" = "@comments/ADD_COMMENT_FAILURE",
 }
 
 export type Comment = {
